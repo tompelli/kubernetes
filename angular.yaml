@@ -5,20 +5,39 @@ kind: Deployment
 metadata:
   name: angular-deployment
   labels:
-    app: angular
+    app: angular-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: angular
+      app: angular-deployment
   template:
     metadata:
       labels:
-        app: angular
+        app: angular-deployment
     spec:
       containers:
-        - name: angular
+        - name: angular-deployment
           image: gcr.io/synedra-innovations/angular-docker-cloud:latest
           command: ["/github/angular-docker-cloud/script/start_container.sh"]
           ports:
             - containerPort: 4200
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: angular-deployment
+  name: angular-deployment-service
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 4200
+    protocol: TCP
+    targetPort: 4200
+  selector:
+    app: angular-deployment
+  sessionAffinity: None
+  type: LoadBalancer
