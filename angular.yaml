@@ -1,2 +1,23 @@
 # Angular Cluster
 #
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-deployment
+  labels:
+    app: angular
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: angular
+  template:
+    metadata:
+      labels:
+        app: angular
+    spec:
+      containers:
+        - name: angular
+          image: gcr.io/synedra-innovations/angular-docker-cloud:latest
+          ports:
+            - containerPort: 4200
