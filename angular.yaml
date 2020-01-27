@@ -19,5 +19,6 @@ spec:
       containers:
         - name: angular
           image: gcr.io/synedra-innovations/angular-docker-cloud:latest
+          command: /github/angular-docker-cloud/script/start_container.sh
           ports:
             - containerPort: 4200
