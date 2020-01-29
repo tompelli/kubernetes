@@ -28,6 +28,8 @@ spec:
   selector:
     matchLabels:
       app: mysql
+  strategy:
+    type: Recreate      
   template:
     metadata:
       labels:
@@ -43,8 +45,8 @@ spec:
               subPath: "mysql"
               name: mysql-data
           env:
-                  #- name: MYSQL_ALLOW_EMPTY_PASSWORD
-                  #value: "yes"
+            #- name: MYSQL_ALLOW_EMPTY_PASSWORD
+            #value: "yes"
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
