@@ -4,17 +4,17 @@ metadata:
   name: nginxsvc
   labels:
     app: nginx
+  namespace: default
 spec:
-  type: NodePort
+  externalTrafficPolicy: Cluster
   ports:
-  - port: 80
-    protocol: TCP
-    name: http
   - port: 443
     protocol: TCP
-    name: https
+    targetPort: 443
   selector:
     app: nginx
+  sessionAffinity: None
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: ReplicationController
