@@ -36,7 +36,7 @@ spec:
           name: nginxconfigmap 
       containers:
       - name: nginxhttps
-        image: ymqytw/nginxhttps:1.5
+        image: gcr.io/synedra-innovations/nginx:latest
         command: ["/home/auto-reload-nginx.sh"]
         ports:
         - containerPort: 443
