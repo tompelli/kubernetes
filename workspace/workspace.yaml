@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workspace
+  labels:
+    app: workspace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: workspace
+  strategy:
+    type: Recreate      
+  template:
+    metadata:
+      labels:
+        app: workspace
+    spec:
+      containers:
+        - name: workspace
+          image: gcr.io/synedra-innovations/workspace
