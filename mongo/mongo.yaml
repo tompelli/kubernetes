@@ -6,7 +6,6 @@ metadata:
     app: mongo-deployment
   namespace: default
 spec:
-  externalTrafficPolicy: Cluster
   ports:
   - port: 27017
     protocol: TCP
