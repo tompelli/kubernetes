@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: workspace
+  name: workspace-deployment
   labels:
     app: workspace
 spec:
@@ -19,3 +19,4 @@ spec:
       containers:
         - name: workspace
           image: gcr.io/synedra-innovations/workspace:latest
+ 
