@@ -9,7 +9,7 @@ db.nettuts.insert({
     occupation: 'developer',
     nationality: 'australian'
 });
-        db.nettuts.insert({
+db.nettuts.insert({
     first: 'james',
     last: 'caan',
     dob: '26/03/1940',
@@ -81,3 +81,33 @@ db.nettuts.find({gender: 'm', $or: [{nationality: 'english'}, {nationality: 'ame
 db.nettuts.update({first: 'james', last: 'caan'}, {$set: {hair_colour: 'brown'}});
 
 db.nettuts.remove({first: 'james', last: 'caan'});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+use admin
+db.auth('root','example')
+
+
+db.createUser( { user: "test",
+                 pwd: "test"
+                 customData: { employeeId: 12345 },
+                 roles: [ { role: "readWrite", db: "nettuts" } ] },
+               { w: "majority" , wtimeout: 5000 } );
+
+use nettuts;            
+db.auth('test','test');
+              
