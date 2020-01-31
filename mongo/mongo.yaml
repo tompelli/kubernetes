@@ -14,7 +14,7 @@ spec:
   selector:
     app: mongo-deployment
   sessionAffinity: None
-  type: LoadBalancer
+  type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
