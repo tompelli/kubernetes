@@ -56,7 +56,7 @@ spec:
               name: mongo-data
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
-              value: root
+              value: "root"
             - name: MONGO_INITDB_ROOT_PASSWORD
               value: "example"
             #- name: MYSQL_ALLOW_EMPTY_PASSWORD
