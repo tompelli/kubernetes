@@ -1,0 +1,6 @@
+from pymongo import MongoClient
+from pprint import pprint
+client = MongoClient('mongodb://root:example@mongo-deployment-service/admin')
+db=client.admin
+serverStatusResult=db.command("serverStatus")
+pprint(serverStatusResult)
