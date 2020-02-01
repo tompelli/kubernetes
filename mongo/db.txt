@@ -100,12 +100,10 @@ db.nettuts.remove({first: 'james', last: 'caan'});
 
 use admin
 db.auth('root','example')
-
-
 db.createUser( { user: "test",
-                 pwd: "test"
+                 pwd: "test",
                  customData: { employeeId: 12345 },
-                 roles: [ { role: "readWrite", db: "nettuts" } ] },
+                 roles: [ { role: "readWrite", db: "nettuts" }, ] },
                { w: "majority" , wtimeout: 5000 } );
 
 use nettuts;            
