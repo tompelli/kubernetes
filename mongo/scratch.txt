@@ -168,12 +168,7 @@ db.auth('test','test');
 
 ---------------------------------------------------
 
-new_user = {
-      "user": "test1",
-      "pwd": "test2",
-      "customData": { "AIMID":13 },
-      "roles": [
-        { "role": "readWrite", "db": "reviews" },
-      ]
-    }
-              
+client.reviews.command("createUser", "test1", pwd="test2", roles=[{ "role": "readWrite", "db": "reviews" }])      
+client = MongoClient('mongodb://test1:test2@mongo-deployment-service/reviews')
+db=client.business
+       
