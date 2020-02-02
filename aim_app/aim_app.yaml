@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: synedra-data-node1-disk
+  name: synedra-data-node-disk
 spec:
   accessModes:
     - ReadWriteOnce
@@ -52,8 +52,8 @@ spec:
           volumeMounts:
             - mountPath: "/data"     
               subPath: "data"
-              name: synedra-aim-node1
+              name: synedra-aim-node
       volumes:
-        - name: synedra-aim-node1
+        - name: synedra-aim-node
           persistentVolumeClaim:
-            claimName: synedra-aim-node1-disk
+            claimName: synedra-aim-node-disk
