@@ -5,19 +5,19 @@ metadata:
   name: "synedra-aim-db"
   namespace: "default"
   labels:
-    app: "synedra_aim_db"
+    app: "synedra-aim-db"
 spec:
   ports:
   - protocol: "TCP"
     port: 5432
   selector:
-    app: "synedra_aim_db"
+    app: "synedra-aim-db"
   type: "ClusterIP"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: synedra_aim_pg_disk
+  name: synedra-aim-pg-disk
 spec:
   accessModes:
     - ReadWriteOnce
@@ -28,23 +28,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: synedra_aim_db_deployment
+  name: synedra-aim-db-deployment
   labels:
-    app: synedra_aim_db
+    app: synedra-aim-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: synedra_aim_db
+      app: synedra-aim-db
   strategy:
     type: Recreate      
   template:
     metadata:
       labels:
-        app: synedra_aim_db
+        app: synedra-aim-db
     spec:
       containers:
-        - name: synedra_aim_db
+        - name: synedra-aim-db
           image: gcr.io/synedra-innovations/aim-db:latest
           # command: ["/opt/synedra/scripts/start.sh"]
           ports:
@@ -52,7 +52,7 @@ spec:
           volumeMounts:
             - mountPath: "/pg"
               subPath: "pg"
-              name: synedra_aim_pg
+              name: synedra-aim-pg
           env:
             - name: PGDATA
               value: "/pg/data/data"
@@ -61,6 +61,6 @@ spec:
             #- name: MYSQL_ALLOW_EMPTY_PASSWORD
             #value: "yes"
       volumes:
-        - name: synedra_aim_pg
+        - name: synedra-aim-pg
           persistentVolumeClaim:
-            claimName: synedra_aim_pg_disk
+            claimName: synedra-aim-pg-disk
