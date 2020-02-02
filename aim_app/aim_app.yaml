@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: synedra-data-node-disk
+  name: synedra-aim-node-disk
 spec:
   accessModes:
     - ReadWriteOnce
