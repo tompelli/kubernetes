@@ -2,22 +2,22 @@
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "synedra-aim-db"
+  name: "synedra-aim-app"
   namespace: "default"
   labels:
-    app: "synedra-aim-db"
+    app: "synedra-aim-app"
 spec:
   ports:
   - protocol: "TCP"
-    port: 5432
+    port: 8088
   selector:
-    app: "synedra-aim-db"
+    app: "synedra-aim-app"
   type: "ClusterIP"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: synedra-aim-pg-disk
+  name: synedra-data-node1-disk
 spec:
   accessModes:
     - ReadWriteOnce
@@ -28,39 +28,32 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: synedra-aim-db-deployment
+  name: synedra-aim-app-deployment
   labels:
-    app: synedra-aim-db
+    app: synedra-aim-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: synedra-aim-db
+      app: synedra-aim-app
   strategy:
     type: Recreate      
   template:
     metadata:
       labels:
-        app: synedra-aim-db
+        app: synedra-aim-app
     spec:
       containers:
-        - name: synedra-aim-db
-          image: gcr.io/synedra-innovations/aim-db:latest
-          # command: ["/opt/synedra/scripts/start.sh"]
+        - name: synedra-aim-app
+          image: gcr.io/synedra-innovations/aim-app-dockerhub:latest
+          command: ["/root/startAIM.sh"]
           ports:
-            - containerPort: 5432
+            - containerPort: 8088
           volumeMounts:
-            - mountPath: "/pg"
-              subPath: "pg"
-              name: synedra-aim-pg
-          env:
-            - name: PGDATA
-              value: "/pg/data/data"
-            - name: PGLOG
-              value: "/pg/data/data/pgstartup.log"
-            #- name: MYSQL_ALLOW_EMPTY_PASSWORD
-            #value: "yes"
+            - mountPath: "/data"
+              subPath: "data"
+              name: synedra-data-node1
       volumes:
-        - name: synedra-aim-pg
+        - name: synedra-data-node1
           persistentVolumeClaim:
-            claimName: synedra-aim-pg-disk
+            claimName: synedra-data-node1-disk
