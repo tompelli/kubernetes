@@ -2,7 +2,7 @@
 apiVersion: "v1"
 kind: "Service"
 metadata:
-  name: "synedra_aim_db"
+  name: "synedra-aim-db"
   namespace: "default"
   labels:
     app: "synedra_aim_db"
