@@ -45,8 +45,8 @@ spec:
     spec:
       containers:
         - name: synedra-aim-app
-          image: gcr.io/synedra-innovations/aim-app-dockerhub:latest
-          command: ["/root/startAIM.sh"]
+          image: gcr.io/synedra-innovations/aim-app:latest
+          command: ["/bin/sleep","86400"]
           ports:
             - containerPort: 8088
           volumeMounts:
