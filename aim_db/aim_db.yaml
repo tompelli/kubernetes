@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: synedra-aim-db
-          image: gcr.io/synedra-innovations/aim-db:latest
+          image: gcr.io/synedra-innovations/aim-db:0.9.3
           # command: ["/opt/synedra/scripts/start.sh"]
           ports:
             - containerPort: 5432
