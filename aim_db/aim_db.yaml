@@ -10,6 +10,10 @@ spec:
   ports:
   - protocol: "TCP"
     port: 5432
+    name: "postgres"
+  - protocol: "TCP"
+    port: 22
+    name: "ssh"
   selector:
     app: "synedra-aim-db"
   type: "ClusterIP"
@@ -49,6 +53,7 @@ spec:
           # command: ["/opt/synedra/scripts/start.sh"]
           ports:
             - containerPort: 5432
+            - containerPort: 22
           volumeMounts:
             - mountPath: "/pg"
               subPath: "pg"
