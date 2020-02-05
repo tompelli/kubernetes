@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: synedra-aim-app
-          image: gcr.io/synedra-innovations/aim-app:0.9.2
+          image: gcr.io/synedra-innovations/aim-app:0.9.3
           command: ["/bin/sleep","86400"]
           ports:
             - containerPort: 8088
