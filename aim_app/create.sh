@@ -1,3 +1,4 @@
-#!/bin/bash
+#!/bin/bash -v
 
-kubectl apply -f aim_app.yaml
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+kubectl apply -f $DIR/aim_app.yaml
