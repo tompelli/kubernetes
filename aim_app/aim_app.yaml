@@ -33,6 +33,9 @@ spec:
   - protocol: "TCP"
     port: 80
     name: web-view
+  - protocol: "TCP"
+    port: 443
+    name: web-view-https
   selector:
     app: "synedra-aim-app"
   type: "LoadBalancer"
