@@ -31,11 +31,11 @@ metadata:
 spec:
   ports:
   - protocol: "TCP"
-    port: 80
-    name: web-view
-  - protocol: "TCP"
     port: 443
     name: web-view-https
+  - protocol: "TCP"
+    port: 11650
+    name: gateway-server
   selector:
     app: "synedra-aim-app"
   type: "LoadBalancer"
