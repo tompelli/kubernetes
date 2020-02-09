@@ -1,0 +1,25 @@
+#
+# Shared Volume
+#
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: file-share-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synedra-aim-pg-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+ 
