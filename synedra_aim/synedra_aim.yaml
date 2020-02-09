@@ -61,9 +61,6 @@ spec:
             - mountPath: "/pg"
               subPath: "pg"
               name: synedra-aim-pg
-            - mountPath: "/share"
-              subPath: "share"
-              name: file-share
           env:
             - name: PGDATA
               value: "/pg/data/data"
@@ -72,9 +69,6 @@ spec:
             #- name: MYSQL_ALLOW_EMPTY_PASSWORD
             #value: "yes"
       volumes:
-        - name: file-share
-          persistentVolumeClaim:
-            claimName: file-share-disk
         - name: synedra-aim-pg
           persistentVolumeClaim:
             claimName: synedra-aim-pg-disk
@@ -164,16 +158,10 @@ spec:
           ports:
             - containerPort: 8088
           volumeMounts:
-            - mountPath: "/share"
-              subPath: "share"
-              name: file-share
             - mountPath: "/data"
               subPath: "data"
               name: synedra-aim-node
       volumes:
-        - name: file-share
-          persistentVolumeClaim:
-            claimName: file-share-disk
         - name: synedra-aim-node
           persistentVolumeClaim:
             claimName: synedra-aim-node-disk
@@ -202,12 +190,3 @@ spec:
       containers:
         - name: workspace
           image: gcr.io/synedra-innovations/workspace:latest
-          volumeMounts:
-            - mountPath: "/share"
-              subPath: "share"
-              name: file-share
-      volumes:
-        - name: file-share
-          persistentVolumeClaim:
-            claimName: file-share-disk
- 
