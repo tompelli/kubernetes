@@ -1,3 +1,6 @@
+#
+# Database
+#
 ---
 apiVersion: "v1"
 kind: "Service"
@@ -41,7 +44,7 @@ spec:
     matchLabels:
       app: synedra-aim-db
   strategy:
-    type: Recreate      
+    type: Recreate
   template:
     metadata:
       labels:
