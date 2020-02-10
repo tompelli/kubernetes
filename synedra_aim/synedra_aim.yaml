@@ -97,6 +97,12 @@ spec:
   - protocol: "TCP"
     port: 22
     name: "ssh"    
+  - protocol: "TCP"
+    port: 11650
+    name: "gateway-server"    
+  - protocol: "TCP"
+    port: 8445
+    name: "control-port"    
   selector:
     app: "synedra-aim-app"
   type: "ClusterIP"
