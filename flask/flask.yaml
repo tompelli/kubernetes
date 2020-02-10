@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - name: flask-deployment
-          image: gcr.io/synedra-innovations/cloud-docker-flask-example:latest
-#          command: ["/github/cloud-docker-flask-example/Script/start_container.sh"]
+#          image: gcr.io/synedra-innovations/cloud-docker-flask-example:latest
+          command: ["/github/cloud-docker-flask-example/Script/start_container.sh"]
           command: ["/bin/sleep", "86400"]
           ports:
             - containerPort: 5000
