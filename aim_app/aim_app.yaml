@@ -27,6 +27,9 @@ spec:
     name: "gateway-server"
   - protocol: "TCP"
     port: 8445
+    name: "control-port-trusted"
+  - protocol: "TCP"
+    port: 8446
     name: "control-port"
   selector:
     app: "synedra-aim-app"
