@@ -22,3 +22,4 @@ spec:
       containers:
         - name: workspace
           image: gcr.io/synedra-innovations/workspace:latest
+          command: ["/opt/synedra/scripts/healthcheck-loop.sh"]
