@@ -15,6 +15,7 @@ spec:
     metadata:
       labels:
         app: flask-deployment
+        ver: 0.9.18
     spec:
       containers:
         - name: flask-deployment
