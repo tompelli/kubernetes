@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: angular-deployment
-        ver: 0.9.8
+        ver: 0.9.9
     spec:
       containers:
         - name: angular-deployment
