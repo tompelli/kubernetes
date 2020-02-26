@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: angular-deployment
-        ver: 0.9.9
+        ver: 0.9.11
     spec:
       containers:
         - name: angular-deployment
@@ -42,3 +42,4 @@ spec:
     app: angular-deployment
   sessionAffinity: None
   type: LoadBalancer
+  loadBalancerIP: "35.187.77.42"
