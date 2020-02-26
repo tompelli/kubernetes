@@ -49,6 +49,7 @@ spec:
     metadata:
       labels:
         app: synedra-aim-db
+        ver: 0.9.25
     spec:
       containers:
         - name: synedra-aim-db
