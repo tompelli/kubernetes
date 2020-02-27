@@ -1,6 +1,4 @@
-#!/bin/bash
+#!/bin/bash -v
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-echo $DIR
-
-kubectl apply -f $DIR/aim_db.yaml
+kubectl apply -f $DIR/manifest.yaml
