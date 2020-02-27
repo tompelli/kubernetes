@@ -53,6 +53,7 @@ spec:
   selector:
     app: "synedra-aim-app"
   type: "LoadBalancer"
+  loadBalancerIP: "34.76.45.196"
   #  loadBalancerIP: "34.102.183.146"
 ---
 apiVersion: v1
