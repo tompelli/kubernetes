@@ -30,7 +30,7 @@ spec:
     name: "control-port-trusted"
   - protocol: "TCP"
     port: 11526
-    name: "archive-server-port-trusted"    
+    name: "archiveserver-port-trusted"    
   - protocol: "TCP"
     port: 8446
     name: "control-port"
