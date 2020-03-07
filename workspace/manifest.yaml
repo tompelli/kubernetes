@@ -1,3 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synedra-share-disk
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
 #
 # Workspace
 #
@@ -24,3 +36,11 @@ spec:
           image: gcr.io/synedra-innovations/workspace:latest
           command: ["/opt/synedra/scripts/healthcheck-loop.sh"]
 #         command: ["/bin/sleep", "86400"]
+          volumeMounts:
+            - mountPath: "/share"
+              subPath: "share"
+              name: synedra-share-disk
+      volumes:
+        - name: synedra-share-disk
+          persistentVolumeClaim:
+            claimName: synedra-share-disk
