@@ -44,4 +44,4 @@ spec:
       volumes:
         - name: synedra-share-disk
           persistentVolumeClaim:
-          - claimName: synedra-share-disk
+             claimName: synedra-share-disk
