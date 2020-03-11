@@ -37,7 +37,7 @@ spec:
       containers:
       - name: nginxhttps
         image: gcr.io/synedra-innovations/nginx:latest
-        command: ["/home/auto-reload-nginx.sh"]
+        command: ["/home/auto-reload-nginx-alt.sh"]
         ports:
         - containerPort: 443
         - containerPort: 80
