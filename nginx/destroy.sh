@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl delete configmap nginxconfigmap
-kubectl delete svc nginxsvc
-kubectl delete replicationcontroller my-nginx
+# kubectl delete configmap nginxconfigmap
+kubectl delete svc nginx-service
+kubectl delete deployment nginx-deployment
 # kubectl delete configmap nginxconfigmap

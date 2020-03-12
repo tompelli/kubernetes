@@ -1,7 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+#     volumes:
+#     - name: secret-volume
+#       secret:
+#          secretName: nginx-certs-keys 
+#     - name: configmap-volume
+#       configMap:
+#         name: nginxconfigmap 
+      containers:
+      - name: nginx-deployment
+        image: gcr.io/synedra-innovations/nginx:latest
+        command: ["/bin/sleep","86400"]
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+#       livenessProbe:
+#         httpGet:
+#           path: /index.html
+#           port: 80
+#         initialDelaySeconds: 30
+#         timeoutSeconds: 1
+#       volumeMounts:
+#       - mountPath: /etc/nginx/ssl
+#         name: secret-volume
+#       - mountPath: /etc/nginx/conf.d
+#         name: configmap-volume 
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginxsvc
+  name: nginx-service
   labels:
     app: nginx
   namespace: default
@@ -12,43 +54,7 @@ spec:
     protocol: TCP
     targetPort: 443
   selector:
-    app: nginx
+    app: nginx-deployment
   sessionAffinity: None
   type: LoadBalancer
 ---
-apiVersion: v1
-kind: ReplicationController
-metadata:
-  name: my-nginx
-spec:
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      volumes:
-      - name: secret-volume
-        secret:
-           secretName: nginx-certs-keys 
-      - name: configmap-volume
-        configMap:
-          name: nginxconfigmap 
-      containers:
-      - name: nginxhttps
-        image: gcr.io/synedra-innovations/nginx:latest
-        command: ["/github/nginx/files/start-container.sh"]
-        ports:
-        - containerPort: 443
-        - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /index.html
-            port: 80
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
-        volumeMounts:
-        - mountPath: /etc/nginx/ssl
-          name: secret-volume
-        - mountPath: /etc/nginx/conf.d
-          name: configmap-volume 
