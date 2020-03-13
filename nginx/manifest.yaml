@@ -24,7 +24,8 @@ spec:
       containers:
       - name: nginx-deployment
         image: gcr.io/synedra-innovations/nginx:latest
-        command: ["/bin/sleep","86400"]
+#       command: ["/bin/sleep","86400"]
+        command: ["/usr/sbin/nginx"]
         ports:
         - containerPort: 443
         - containerPort: 80
