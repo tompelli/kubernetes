@@ -45,3 +45,4 @@ spec:
     app: r-shiny-deployment
   sessionAffinity: None
   type: LoadBalancer
+  loadBalancerIP: "35.241.156.0"  
