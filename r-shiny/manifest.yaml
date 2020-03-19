@@ -16,8 +16,9 @@ spec:
     spec:
       containers:
       - name: r-shiny-deployment
-        image: gcr.io/synedra-innovations/r-shiny:latest
+        image: gcr.io/synedra-innovations/r-shiny3:latest
         command: ["/bin/sleep","86400"]
+        command: ["/github/r-shiny3/start_container.sh"]
         ports:
         - containerPort: 3838
         - containerPort: 6533
@@ -33,6 +34,11 @@ spec:
   externalTrafficPolicy: Cluster
   ports:
   - port: 3838
+    name: shiny-server
+    protocol: TCP
+    targetPort: 3838
+  - port: 6355
+    name: shiny-commandline
     protocol: TCP
     targetPort: 6533
   selector:
