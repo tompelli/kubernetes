@@ -17,10 +17,10 @@ spec:
 #     volumes:
 #     - name: secret-volume
 #       secret:
-#          secretName: nginx-certs-keys 
+#          secretName: nginx-certs-keys
 #     - name: configmap-volume
 #       configMap:
-#         name: nginxconfigmap 
+#         name: nginxconfigmap
       containers:
       - name: nginx-deployment
         image: gcr.io/synedra-innovations/nginx:latest
@@ -39,7 +39,7 @@ spec:
 #       - mountPath: /etc/nginx/ssl
 #         name: secret-volume
 #       - mountPath: /etc/nginx/conf.d
-#         name: configmap-volume 
+#         name: configmap-volume
 ---
 apiVersion: v1
 kind: Service
@@ -58,4 +58,5 @@ spec:
     app: nginx-deployment
   sessionAffinity: None
   type: LoadBalancer
+  loadBalancerIP: "35.187.163.56"
 ---
