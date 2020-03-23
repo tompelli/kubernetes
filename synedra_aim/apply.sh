@@ -1,9 +1,10 @@
 #!/bin/bash
 
-kubectl apply -f ../workspace/manifest.yaml
-kubectl apply -f ../aim_app/manifest.yaml
-kubectl apply -f ../aim_db/manifest.yaml
-kubectl apply -f ../flask/manifest.yaml
-kubectl apply -f ../angular/manifest.yaml
-kubectl apply -f ../nginx/manifest.yaml
-kubectl apply -f ../r-shiny/manifest.yaml
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+kubectl apply -f $DIR/../workspace/manifest.yaml
+kubectl apply -f $DIR/../aim_app/manifest.yaml
+kubectl apply -f $DIR/../aim_db/manifest.yaml
+kubectl apply -f $DIR/../flask/manifest.yaml
+kubectl apply -f $DIR/../angular/manifest.yaml
+kubectl apply -f $DIR/../nginx/manifest.yaml
+kubectl apply -f $DIR/../r-shiny/manifest.yaml
