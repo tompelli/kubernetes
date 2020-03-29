@@ -22,6 +22,9 @@ spec:
         ports:
         - containerPort: 3838
         - containerPort: 6533
+        env:
+        - name: TIMEVIS_BASE_DIR
+          value: "root"
 ---
 apiVersion: v1
 kind: Service
