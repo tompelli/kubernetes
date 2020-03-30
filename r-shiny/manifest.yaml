@@ -21,7 +21,7 @@ spec:
         command: ["/github/r-shiny3/start_container.sh"]
         ports:
         - containerPort: 3838
-        - containerPort: 6533
+        - containerPort: 6355
         env:
         - name: TIMEVIS_BASE_DIR
           value: "/github/r-shiny3/files/apps/timevis"
@@ -43,7 +43,7 @@ spec:
   - port: 6355
     name: shiny-commandline
     protocol: TCP
-    targetPort: 6533
+    targetPort: 6355
   selector:
     app: r-shiny-deployment
   sessionAffinity: None
