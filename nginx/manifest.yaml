@@ -14,32 +14,13 @@ spec:
       labels:
         app: nginx-deployment
     spec:
-#     volumes:
-#     - name: secret-volume
-#       secret:
-#          secretName: nginx-certs-keys
-#     - name: configmap-volume
-#       configMap:
-#         name: nginxconfigmap
       containers:
       - name: nginx-deployment
         image: gcr.io/synedra-innovations/nginx:latest
-#       command: ["/bin/sleep","86400"]
         command: ["/usr/sbin/nginx"]
         ports:
         - containerPort: 443
         - containerPort: 80
-#       livenessProbe:
-#         httpGet:
-#           path: /index.html
-#           port: 80
-#         initialDelaySeconds: 30
-#         timeoutSeconds: 1
-#       volumeMounts:
-#       - mountPath: /etc/nginx/ssl
-#         name: secret-volume
-#       - mountPath: /etc/nginx/conf.d
-#         name: configmap-volume
 ---
 apiVersion: v1
 kind: Service
